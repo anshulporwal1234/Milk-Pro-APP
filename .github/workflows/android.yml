@@ -6,6 +6,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    
+    env:
+      ANDROIDSDK_ACCEPT_LICENSES: "1"
 
     steps:
       - uses: actions/checkout@v4
