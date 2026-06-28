@@ -20,6 +20,8 @@ android.api = 34
 android.minapi = 21
 android.sdk = 34
 
+p4a.fork = kivy
+p4a.branch = develop
 p4a.branch = master
 
 [buildozer]
