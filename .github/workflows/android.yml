@@ -40,14 +40,10 @@ jobs:
 
     - name: Build with Buildozer
       env:
+        # GitHub ke saare pre-installed system paths ko block kar rahe hain
         ANDROID_NDK_HOME: ''
         ANDROID_NDK_ROOT: ''
         ANDROID_NDK: ''
+        ANDROID_NDK_LATEST_HOME: ''
       run: |
         yes | buildozer android debug
-
-    - name: Upload APK Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: Milk-Diary-Pro-APK
-        path: bin/*.apk
