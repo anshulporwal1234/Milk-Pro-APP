@@ -39,6 +39,10 @@ jobs:
         pip install "setuptools<66.0.0" "wheel<0.40.0" "Cython<3.0.0" buildozer
 
     - name: Build with Buildozer
+      env:
+        ANDROID_NDK_HOME: ''
+        ANDROID_NDK_ROOT: ''
+        ANDROID_NDK: ''
       run: |
         yes | buildozer android debug
 
