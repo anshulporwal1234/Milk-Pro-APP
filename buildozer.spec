@@ -22,7 +22,6 @@ android.sdk = 34
 
 p4a.fork = kivy
 p4a.branch = develop
-p4a.branch = master
 
 [buildozer]
 log_level = 2
