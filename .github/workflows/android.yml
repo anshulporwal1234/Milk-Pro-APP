@@ -2,58 +2,62 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ main, master ]
+    branches:
+      - main
+      - master
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-22.04
 
+    env:
+      ANDROIDSDK_ACCEPT_LICENSES: "1"
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 
-    - name: Install system dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y \
-          build-essential \
-          libffi-dev \
-          libssl-dev \
-          autoconf \
-          autotools-dev \
-          libtool \
-          pkg-config \
-          zlib1g-dev \
-          libsqlite3-dev \
-          sqlite3
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            libffi-dev \
+            libssl-dev \
+            autoconf \
+            automake \
+            autotools-dev \
+            libtool \
+            pkg-config \
+            zlib1g-dev \
+            libsqlite3-dev \
+            sqlite3 \
+            unzip \
+            zip \
+            openjdk-17-jdk
 
-    - name: Install Buildozer and Cython
-      run: |
-        pip install --upgrade pip
-        pip install "setuptools<66.0.0" "wheel<0.40.0" "Cython<3.0.0" buildozer
+      - name: Install Buildozer
+        run: |
+          python -m pip install --upgrade pip
+          pip install "setuptools<66" "wheel<0.40" "Cython<3.0" buildozer
 
-    - name: Clean Cache and Build with Buildozer
-      env:
-        ANDROID_NDK_HOME: ''
-        ANDROID_NDK_ROOT: ''
-        ANDROID_NDK: ''
-        ANDROID_NDK_LATEST_HOME: ''
-      run: |
-        # Har us purane cache folder ko physically delete kar rahe hain jo galat r28c utha raha tha
-        rm -rf .buildozer/
-        rm -rf ~/.buildozer/
-        
-        # Fresh aur clean compile trigger
-        yes | buildozer android debug
+      - name: Clean previous build
+        run: |
+          rm -rf .buildozer
+          rm -rf ~/.buildozer
 
-    - name: Upload APK Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: Milk-Diary-Pro-APK
-        path: bin/*.apk
+      - name: Build APK
+        run: |
+          yes | buildozer android debug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Milk-Diary-Pro-APK
+          path: bin/*.apk
