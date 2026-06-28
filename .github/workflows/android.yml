@@ -10,8 +10,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Show files
-        run: ls -la
+      - name: Build APK
+        uses: digreatbrian/buildozer-action@v2
+        with:
+          buildozer_version: stable
 
-      - name: Show buildozer.spec
-        run: cat buildozer.spec
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: MilkDiaryPro-APK
+          path: bin/*.apk
