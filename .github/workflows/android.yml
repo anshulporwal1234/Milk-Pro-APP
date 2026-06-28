@@ -11,12 +11,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.10' # GitHub runner par stable build ke liye Python 3.10 standard hai
+        python-version: '3.10'
 
     - name: Install system dependencies
       run: |
@@ -30,11 +30,6 @@ jobs:
           libtool \
           pkg-config \
           zlib1g-dev \
-          libgstreamer1.0-dev \
-          gstreamer1.0-plugins-base \
-          gstreamer1.0-plugins-good \
-          gstreamer1.0-plugins-bad \
-          gstreamer1.0-plugins-ugly \
           libsqlite3-dev \
           sqlite3
 
