@@ -4,7 +4,6 @@ package.name = milkdiarypro
 package.domain = org.anshul
 
 source.dir = .
-
 source.include_exts = py,png,jpg,jpeg,json,db,ttf
 
 version = 1.0
@@ -15,7 +14,8 @@ orientation = portrait
 fullscreen = 1
 
 android.permissions = INTERNET
-android.ndk = 25b
+
+# Explicitly mapping stable architecture filters
 android.archs = arm64-v8a
 
 [buildozer]
