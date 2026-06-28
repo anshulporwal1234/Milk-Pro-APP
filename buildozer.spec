@@ -15,8 +15,10 @@ fullscreen = 1
 
 android.permissions = INTERNET
 
-# Explicitly mapping stable architecture filters
 android.archs = arm64-v8a
+android.api = 34
+android.minapi = 21
+android.sdk = 34
 
 [buildozer]
 log_level = 2
