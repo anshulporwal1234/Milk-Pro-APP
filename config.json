@@ -1,12 +1,12 @@
 {
-    "milk_rate": 60.0,
-    "owner_name": "My Name",
-    "customer_name": "Anshul",
-    "email": "anshul.ospl@gmail.com",
-    "phone": "7974872443",
+    "milk_rate": 65.0,
+    "owner_name": "Owner Name",
+    "customer_name": "Customer Name",
+    "email": "",
+    "phone": "",
     "notifications": true,
-    "backup_folder": "C:/Users/Administrator/Desktop/Milk Dairy Pro Gemini",
-    "language": "English",
-    "last_mailed_month": "2026-06",
+    "backup_folder": "backups",
+    "language": "",
+    "last_mailed_month": "",
     "app_password": ""
 }
